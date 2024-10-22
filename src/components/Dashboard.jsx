@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import PokemonCard from "./PokemonCard";
+import { useContext } from "react";
+import { PokemonContext } from "../pages/dex";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -20,36 +22,14 @@ const Message = styled.p`
   color: black;
 `;
 
-const SlotsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  width: 100%;
-  justify-items: center;
-`; // DashboardContent로 사용해서 필요없게? 된듯
-
-const EmptySlot = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: #fff;
-  border: 2px dashed #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-`;
-
-const PokeballImage = styled.img`
-  width: 50px;
-  height: 50px;
-`;
-
 const DashboardContent = styled.div`
   display: flex;
   gap: 8px;
 `;
 
-const Dashboard = ({ selectedPokemon, removePokemon }) => {
+const Dashboard = () => {
+  const { selectedPokemon, removePokemon } = useContext(PokemonContext);
+
   return (
     <DashboardContainer>
       <Title>대시보드</Title>
